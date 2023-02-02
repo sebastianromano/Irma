@@ -40,211 +40,82 @@
       L.control.scale({ imperial: true, metric: true }).addTo(map);
 
       // show a marker on the map
-      // irma butikker der lukker permannet
-      L.marker({ lon: 12.561848, lat: 55.687295 })
-        .bindTooltip("<b>Irma lukker</b>")
-        .addTo(map);
-      L.marker({ lon: 12.532219, lat: 55.722861 })
-        .bindTooltip("<b>Irma lukker</b>")
-        .addTo(map);
-      L.marker({ lon: 12.520011, lat: 55.680927 })
-        .bindTooltip("<b>Irma lukker</b>")
-        .addTo(map);
-      L.marker({ lon: 12.67292, lat: 55.594093 })
-        .bindTooltip("<b>Irma lukker</b>")
-        .addTo(map);
-      L.marker({ lon: 12.549361, lat: 55.6945 })
-        .bindTooltip("<b>Irma lukker</b>")
-        .addTo(map);
-      L.marker({ lon: 12.305478, lat: 56.124389 })
-        .bindTooltip("<b>Irma lukker</b>")
-        .addTo(map);
-      L.marker({ lon: 12.51369, lat: 55.692375 })
-        .bindTooltip("<b>Irma lukker</b>")
-        .addTo(map);
-      L.marker({ lon: 12.567561, lat: 55.731328 })
-        .bindTooltip("<b>Irma lukker</b>")
-        .addTo(map);
-      L.marker({ lon: 12.530318, lat: 55.964526 })
-        .bindTooltip("<b>Irma lukker</b>")
-        .addTo(map);
-      L.marker({ lon: 12.469978, lat: 55.699236 })
-        .bindTooltip("<b>Irma lukker</b>")
-        .addTo(map);
-      L.marker({ lon: 11.667443, lat: 55.922863 })
-        .bindTooltip("<b>Irma lukker</b>")
-        .addTo(map);
-      L.marker({ lon: 12.547411, lat: 55.683284 })
-        .bindTooltip("<b>Irma lukker</b>")
-        .addTo(map);
-      L.marker({ lon: 12.487823, lat: 55.672796 })
-        .bindTooltip("<b>Irma lukker</b>")
-        .addTo(map);
-      L.marker({ lon: 12.456494, lat: 55.680013 })
-        .bindTooltip("<b>Irma lukker</b>")
-        .addTo(map);
-      L.marker({ lon: 12.592863, lat: 55.671454 })
-        .bindTooltip("<b>Irma lukker</b>")
-        .addTo(map);
-      L.marker({ lon: 12.574971, lat: 55.631694 })
-        .bindTooltip("<b>Irma lukker</b>")
-        .addTo(map);
-      L.marker({ lon: 12.577893, lat: 55.71013 })
-        .bindTooltip("<b>Irma lukker</b>")
-        .addTo(map);
+      const markers = [
+        // irma butikker der lukker permannet
+        [55.687295, 12.561848, "Irma lukker"],
+        [55.722861, 12.532219, "Irma lukker"],
+        [55.680927, 12.520011, "Irma lukker"],
+        [55.594093, 12.67292, "Irma lukker"],
+        [55.6945, 12.549361, "Irma lukker"],
+        [56.124389, 12.305478, "Irma lukker"],
+        [55.692375, 12.51369, "Irma lukker"],
+        [55.731328, 12.567561, "Irma lukker"],
+        [55.964526, 12.530318, "Irma lukker"],
+        [55.699236, 12.469978, "Irma lukker"],
+        [55.922863, 11.667443, "Irma lukker"],
+        [55.683284, 12.547411, "Irma lukker"],
+        [55.672796, 12.487823, "Irma lukker"],
+        [55.680013, 12.456494, "Irma lukker"],
+        [55.671454, 12.592863, "Irma lukker"],
+        [55.631694, 12.574971, "Irma lukker"],
+        [55.71013, 12.577893, "Irma lukker"],
+        // irma butikker der ændrer navn til Coop
+        [55.684828, 12.569065, "Irma ændrer navn:<br>Coop"],
+        [55.6630825, 12.6036117, "Irma ændrer navn:<br>Coop"],
+        [55.761962, 12.576142, "Irma ændrer navn:<br>Coop"],
+        [55.662829, 12.603788, "Irma ændrer navn:<br>Coop"],
+        [55.673913, 12.553911, "Irma ændrer navn:<br>Coop"],
+        [55.882082, 12.496654, "Irma ændrer navn:<br>Coop"],
+        [55.670389, 12.538916, "Irma ændrer navn:<br>Coop"],
+        [55.7125, 12.577237, "Irma ændrer navn:<br>Coop"],
+        [55.692071, 12.588239, "Irma ændrer navn:<br>Coop"],
+        // irma butikker der ændrer navn til 365discount
+        [55.7600747, 12.4544911, "Irma ændrer navn:<br>365discount"],
+        [55.675831, 12.543605, "Irma ændrer navn:<br>365discount"],
+        [55.64241, 12.631738, "Irma ændrer navn:<br>365discount"],
+        [55.771942, 12.501918, "Irma ændrer navn:<br>365discount"],
+        [55.648216, 12.527557, "Irma ændrer navn:<br>365discount"],
+        [55.68563, 12.551737, "Irma ændrer navn:<br>365discount"],
+        [55.760173, 12.454444, "Irma ændrer navn:<br>365discount"],
+        [55.839901, 12.430341, "Irma ændrer navn:<br>365discount"],
+        [55.684703, 12.586374, "Irma ændrer navn:<br>365discount"],
+        [55.995413, 12.546453, "Irma ændrer navn:<br>365discount"],
+        [55.814365, 12.38143, "Irma ændrer navn:<br>365discount"],
+        [55.58308, 12.312731, "Irma ændrer navn:<br>365discount"],
+        [56.039352, 12.587372, "Irma ændrer navn:<br>365discount"],
+        [55.930188, 12.305942, "Irma ændrer navn:<br>365discount"],
+        [55.810909, 12.471591, "Irma ændrer navn:<br>365discount"],
+        [55.675441, 12.567701, "Irma ændrer navn:<br>365discount"],
+        [55.688866, 12.488849, "Irma ændrer navn:<br>365discount"],
+        [55.457764, 12.185543, "Irma ændrer navn:<br>365discount"],
+        [55.709694, 12.562056, "Irma ændrer navn:<br>365discount"],
+        [55.693345, 12.532357, "Irma ændrer navn:<br>365discount"],
+        [55.814725, 12.530281, "Irma ændrer navn:<br>365discount"],
+        [55.68284, 12.571793, "Irma ændrer navn:<br>365discount"],
+        [55.640727, 12.077408, "Irma ændrer navn:<br>365discount"],
+        [55.645937, 12.548761, "Irma ændrer navn:<br>365discount"],
+        [55.709122, 12.521554, "Irma ændrer navn:<br>365discount"],
+        [55.76037, 12.484067, "Irma ændrer navn:<br>365discount"],
+        [55.706527, 12.58662, "Irma ændrer navn:<br>365discount"],
+        [55.701507, 12.551311, "Irma ændrer navn:<br>365discount"],
+        [55.666796, 12.515966, "Irma ændrer navn:<br>365discount"],
+        // irma butikker der ændrer navn til Brugsen
+        [55.675198, 12.597279, "Irma ændrer navn:<br>Brugsen Brobergsgade"],
+        [55.658052, 12.567339, "Irma ændrer navn:<br>Brugsen Islands Brygge"],
+        [55.753896, 12.569879, "Irma ændrer navn:<br>Brugsen Jægersborg Alle"],
+        [55.69127, 12.57626, "Irma ændrer navn:<br>Brugsen Øster Farimagsgade"],
+        [55.697293, 12.579555, "Irma ændrer navn:<br>Brugsen Østerbrogade"],
+        [55.678665, 12.508388, "Irma ændrer navn:<br>Brugsen Peter Bangs vej"],
+        [55.694266, 12.570549, "Irma ændrer navn:<br>Brugsen Ryesgade"],
+        [55.781701, 12.481103, "Irma ændrer navn:<br>Brugsen Sorgenfri Torv"],
+        [55.740829, 12.577766, "Irma ændrer navn:<br>Brugsen Strandvejen"],
+        [55.850723, 12.568627, "Irma ændrer navn:<br>Brugsen Vedbæk"],
+        [55.6725, 12.55526, "Irma ændrer navn:<br>Brugsen Vesterbrogade"],
+      ];
 
-      // irma butikker der ændrer navn til Coop
-      L.marker({ lon: 12.569065, lat: 55.684828 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> Coop")
-        .addTo(map);
-      L.marker({ lon: 12.6036117, lat: 55.6630825 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> Coop")
-        .addTo(map);
-      L.marker({ lon: 12.576142, lat: 55.761962 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> Coop")
-        .addTo(map);
-      L.marker({ lon: 12.603788, lat: 55.662829 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> Coop")
-        .addTo(map);
-      L.marker({ lon: 12.553911, lat: 55.673913 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> Coop")
-        .addTo(map);
-      L.marker({ lon: 12.496654, lat: 55.882082 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> Coop")
-        .addTo(map);
-      L.marker({ lon: 12.538916, lat: 55.670389 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> Coop")
-        .addTo(map);
-      L.marker({ lon: 12.577237, lat: 55.7125 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> Coop")
-        .addTo(map);
-      L.marker({ lon: 12.588239, lat: 55.692071 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> Coop")
-        .addTo(map);
-
-      // irma butikker der ændrer navn til 365discount
-      L.marker({ lon: 12.4544911, lat: 55.7600747 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.543605, lat: 55.675831 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.631738, lat: 55.64241 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.501918, lat: 55.771942 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.527557, lat: 55.648216 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.551737, lat: 55.68563 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.454444, lat: 55.760173 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.430341, lat: 55.839901 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.586374, lat: 55.684703 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.546453, lat: 55.995413 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.38143, lat: 55.814365 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.312731, lat: 55.58308 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.587372, lat: 56.039352 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.305942, lat: 55.930188 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.471591, lat: 55.810909 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.567701, lat: 55.675441 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.488849, lat: 55.688866 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.185543, lat: 55.457764 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.562056, lat: 55.709694 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.532357, lat: 55.693345 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.530281, lat: 55.814725 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.571793, lat: 55.68284 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.077408, lat: 55.640727 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.548761, lat: 55.645937 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.521554, lat: 55.709122 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.484067, lat: 55.76037 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.58662, lat: 55.706527 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.551311, lat: 55.701507 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-      L.marker({ lon: 12.515966, lat: 55.666796 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> 365discount")
-        .addTo(map);
-
-      // irma butikker der ændrer navn til Brugsen
-      L.marker({ lon: 12.597279, lat: 55.675198 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> Brugsen Brobergsgade")
-        .addTo(map);
-      L.marker({ lon: 12.567339, lat: 55.658052 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> Brugsen Islands Brygge")
-        .addTo(map);
-      L.marker({ lon: 12.569879, lat: 55.753896 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> Brugsen Jægersborg Alle")
-        .addTo(map);
-      L.marker({ lon: 12.57626, lat: 55.69127 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> Brugsen Øster Farimagsgade")
-        .addTo(map);
-      L.marker({ lon: 12.579555, lat: 55.697293 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> Brugsen Østerbrogade")
-        .addTo(map);
-      L.marker({ lon: 12.508388, lat: 55.678665 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> Brugsen Peter Bangs vej")
-        .addTo(map);
-      L.marker({ lon: 12.570549, lat: 55.694266 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> Brugsen Ryesgade")
-        .addTo(map);
-      L.marker({ lon: 12.481103, lat: 55.781701 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> Brugsen Sorgenfri Torv")
-        .addTo(map);
-      L.marker({ lon: 12.577766, lat: 55.740829 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> Brugsen Strandvejen")
-        .addTo(map);
-      L.marker({ lon: 12.568627, lat: 55.850723 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> Brugsen Vedbæk")
-        .addTo(map);
-      L.marker({ lon: 12.55526, lat: 55.6725 })
-        .bindTooltip("<b>Irma ændrer navn:</b><br> Brugsen Vesterbrogade")
-        .addTo(map);
+      markers.forEach((marker) => {
+        L.marker([marker[0], marker[1]]).bindTooltip(marker[2]).addTo(map);
+      });
     </script>
   </body>
 </html>
