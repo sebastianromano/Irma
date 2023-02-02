@@ -23,11 +23,11 @@
       }
     </style>
   </head>
-
+  <body>
     <div id="map"></div>
     <script>
       // initialize Leaflet
-      var map = L.map("map").setView({ lon: 12.568337, lat: 55.676098 }, 11);
+      const map = L.map("map").setView([55.676098, 12.568337], 11);
 
       // add the OpenStreetMap tiles
       L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {

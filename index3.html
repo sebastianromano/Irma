@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <style>
+      html,
+      body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      #map {
+        /* configure the size of the map */
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      // initialize Leaflet
+      const map = L.map("map").setView([55.676098, 12.568337], 11);
+
+      // add the OpenStreetMap tiles
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution:
+          '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>',
+      }).addTo(map);
+
+      // show the scale bar on the lower left corner
+      L.control.scale({ imperial: true, metric: true }).addTo(map);
+
+      // show a marker on the map
+      const markers = [
+        // irma butikker der lukker permannet
+        [55.687295, 12.561848, "Irma lukker"],
+        [55.722861, 12.532219, "Irma lukker"],
+        [55.680927, 12.520011, "Irma lukker"],
+        [55.594093, 12.67292, "Irma lukker"],
+        [55.6945, 12.549361, "Irma lukker"],
+        [56.124389, 12.305478, "Irma lukker"],
+        [55.692375, 12.51369, "Irma lukker"],
+        [55.731328, 12.567561, "Irma lukker"],
+        [55.964526, 12.530318, "Irma lukker"],
+        [55.699236, 12.469978, "Irma lukker"],
+        [55.922863, 11.667443, "Irma lukker"],
+        [55.683284, 12.547411, "Irma lukker"],
+        [55.672796, 12.487823, "Irma lukker"],
+        [55.680013, 12.456494, "Irma lukker"],
+        [55.671454, 12.592863, "Irma lukker"],
+        [55.631694, 12.574971, "Irma lukker"],
+        [55.71013, 12.577893, "Irma lukker"],
+        // irma butikker der ændrer navn til Coop
+        [55.684828, 12.569065, "Irma ændrer navn:<br>Coop"],
+        [55.6630825, 12.6036117, "Irma ændrer navn:<br>Coop"],
+        [55.761962, 12.576142, "Irma ændrer navn:<br>Coop"],
+        [55.662829, 12.603788, "Irma ændrer navn:<br>Coop"],
+        [55.673913, 12.553911, "Irma ændrer navn:<br>Coop"],
+        [55.882082, 12.496654, "Irma ændrer navn:<br>Coop"],
+        [55.670389, 12.538916, "Irma ændrer navn:<br>Coop"],
+        [55.7125, 12.577237, "Irma ændrer navn:<br>Coop"],
+        [55.692071, 12.588239, "Irma ændrer navn:<br>Coop"],
+        // irma butikker der ændrer navn til 365discount
+        [55.7600747, 12.4544911, "Irma ændrer navn:<br>365discount"],
+        [55.675831, 12.543605, "Irma ændrer navn:<br>365discount"],
+        [55.64241, 12.631738, "Irma ændrer navn:<br>365discount"],
+        [55.771942, 12.501918, "Irma ændrer navn:<br>365discount"],
+        [55.648216, 12.527557, "Irma ændrer navn:<br>365discount"],
+        [55.68563, 12.551737, "Irma ændrer navn:<br>365discount"],
+        [55.760173, 12.454444, "Irma ændrer navn:<br>365discount"],
+        [55.839901, 12.430341, "Irma ændrer navn:<br>365discount"],
+        [55.684703, 12.586374, "Irma ændrer navn:<br>365discount"],
+        [55.995413, 12.546453, "Irma ændrer navn:<br>365discount"],
+        [55.814365, 12.38143, "Irma ændrer navn:<br>365discount"],
+        [55.58308, 12.312731, "Irma ændrer navn:<br>365discount"],
+        [56.039352, 12.587372, "Irma ændrer navn:<br>365discount"],
+        [55.930188, 12.305942, "Irma ændrer navn:<br>365discount"],
+        [55.810909, 12.471591, "Irma ændrer navn:<br>365discount"],
+        [55.675441, 12.567701, "Irma ændrer navn:<br>365discount"],
+        [55.688866, 12.488849, "Irma ændrer navn:<br>365discount"],
+        [55.457764, 12.185543, "Irma ændrer navn:<br>365discount"],
+        [55.709694, 12.562056, "Irma ændrer navn:<br>365discount"],
+        [55.693345, 12.532357, "Irma ændrer navn:<br>365discount"],
+        [55.814725, 12.530281, "Irma ændrer navn:<br>365discount"],
+        [55.68284, 12.571793, "Irma ændrer navn:<br>365discount"],
+        [55.640727, 12.077408, "Irma ændrer navn:<br>365discount"],
+        [55.645937, 12.548761, "Irma ændrer navn:<br>365discount"],
+        [55.709122, 12.521554, "Irma ændrer navn:<br>365discount"],
+        [55.76037, 12.484067, "Irma ændrer navn:<br>365discount"],
+        [55.706527, 12.58662, "Irma ændrer navn:<br>365discount"],
+        [55.701507, 12.551311, "Irma ændrer navn:<br>365discount"],
+        [55.666796, 12.515966, "Irma ændrer navn:<br>365discount"],
+        // irma butikker der ændrer navn til Brugsen
+        [55.675198, 12.597279, "Irma ændrer navn:<br>Brugsen Brobergsgade"],
+        [55.658052, 12.567339, "Irma ændrer navn:<br>Brugsen Islands Brygge"],
+        [55.753896, 12.569879, "Irma ændrer navn:<br>Brugsen Jægersborg Alle"],
+        [55.69127, 12.57626, "Irma ændrer navn:<br>Brugsen Øster Farimagsgade"],
+        [55.697293, 12.579555, "Irma ændrer navn:<br>Brugsen Østerbrogade"],
+        [55.678665, 12.508388, "Irma ændrer navn:<br>Brugsen Peter Bangs vej"],
+        [55.694266, 12.570549, "Irma ændrer navn:<br>Brugsen Ryesgade"],
+        [55.781701, 12.481103, "Irma ændrer navn:<br>Brugsen Sorgenfri Torv"],
+        [55.740829, 12.577766, "Irma ændrer navn:<br>Brugsen Strandvejen"],
+        [55.850723, 12.568627, "Irma ændrer navn:<br>Brugsen Vedbæk"],
+        [55.6725, 12.55526, "Irma ændrer navn:<br>Brugsen Vesterbrogade"],
+      ];
+
+      markers.forEach((marker) => {
+        L.marker([marker[0], marker[1]]).bindTooltip(marker[2]).addTo(map);
+      });
+    </script>
+  </body>
+</html>
