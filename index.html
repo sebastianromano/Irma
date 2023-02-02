@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Leaflet map with markers</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
@@ -36,7 +37,19 @@
         .then((response) => response.json())
         .then((data) => {
           data.forEach((marker) => {
-            L.marker([marker[0], marker[1]]).bindTooltip(marker[2]).addTo(map);
+            const markerColor = marker[3]; // marker color from marker data
+            const markerIcon = L.icon({
+              iconUrl: `https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${markerColor}.png`,
+              shadowUrl:
+                "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+              iconSize: [25, 41],
+              iconAnchor: [12, 41],
+              popupAnchor: [1, -34],
+              shadowSize: [41, 41],
+            });
+            L.marker([marker[0], marker[1]], { icon: markerIcon })
+              .bindTooltip(marker[2])
+              .addTo(map);
           });
         });
     </script>
